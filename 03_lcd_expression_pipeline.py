@@ -126,9 +126,9 @@ def preprocess(image_bgr: np.ndarray) -> np.ndarray:
     # LCD 是白底黑字，因此使用 THRESH_BINARY_INV：黑色字符 -> 白色前景。
     _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
 
-    # 去掉非常细碎的噪声，不做复杂形态学，避免把相邻字符粘连。
-    kernel = np.ones((2, 2), np.uint8)
-    binary = cv2.morphologyEx(binary, cv2.MORPH_OPEN, kernel, iterations=1)
+    # # 去掉非常细碎的噪声，不做复杂形态学，避免把相邻字符粘连。
+    # kernel = np.ones((2, 2), np.uint8)
+    # binary = cv2.morphologyEx(binary, cv2.MORPH_OPEN, kernel, iterations=1)
     return binary
 
 
